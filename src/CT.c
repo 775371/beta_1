@@ -180,7 +180,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         best = 0;
         
         for (i = 0; right_n > edge; i++) {
-                Rprintf("The beta_1 in function CT in CT.c is %d\n",(double)beta_1);
+                /*Rprintf("The beta_1 in function CT in CT.c is %d\n",(double)beta_1);*/
             left_wt += wt[i];
             right_wt -= wt[i];
             left_tr += wt[i] * treatment[i];
