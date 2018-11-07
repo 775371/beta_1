@@ -208,13 +208,14 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             left_zz_sum += *y[i] * *y[i];
             right_zz_sum -= *y[i] * *y[i];
             
-            if (x[i + 1] != x[i] && left_n >= edge &&
+                /* change treatment */
+           /* if (x[i + 1] != x[i] && left_n >= edge &&
                 (int) left_tr >= min_node_size &&
                 (int) left_wt - (int) left_tr >= min_node_size &&
                 (int) right_tr >= min_node_size &&
-                (int) right_wt - (int) right_tr >= min_node_size) {                             
+                (int) right_wt - (int) right_tr >= min_node_size) {  */                           
                                             
-               
+               if (x[i + 1] != x[i] ) {
                      
     beta_1 = (left_n * left_yz_sum - left_z_sum * left_y_sum) / (left_n * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_n;
