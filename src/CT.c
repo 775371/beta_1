@@ -215,7 +215,9 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 (int) right_tr >= min_node_size &&
                 (int) right_wt - (int) right_tr >= min_node_size) {  */                           
                                             
-               if (x[i + 1] != x[i] ) {
+               if (x[i + 1] != x[i] &&
+                (int) left_wt >= min_node_size &&
+                (int) right_wt  >= min_node_size) {
                      
     beta_1 = (left_n * left_yz_sum - left_z_sum * left_y_sum) / (left_n * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_n;
