@@ -369,7 +369,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                /* change treatment split*/
     beta_1 = (left_n * left_yz_sum - left_z_sum * left_y_sum) / (left_n * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_n;
-    left_temp = beta_1;
+    left_temp = beta_0;
     beta_sqr_sum = beta_1 * beta_1 ;
     var_beta = beta_sqr_sum / n - beta_1 * beta_1 / (n * n);
     
@@ -383,7 +383,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     
     beta_1 = (right_n * right_yz_sum - right_z_sum * right_y_sum) / (right_n * right_yy_sum - right_y_sum * right_y_sum);
     beta_0 = (right_z_sum - beta_1 * right_y_sum) / right_n;
-    right_temp = beta_1;
+    right_temp = beta_0;
     beta_sqr_sum = beta_1 * beta_1 ;
     var_beta = beta_sqr_sum / n - beta_1 * beta_1 / (n * n);
     
