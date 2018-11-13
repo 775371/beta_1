@@ -37,7 +37,10 @@ causalTree <- function(formula, data, weights, treatment, subset,
 	nobs <- nrow(X)
 	nvar <- ncol(X)
 	#treatment <- m$`(treatment)`
-
+        #find sample
+	print(X)
+	
+	
 	## requirement for treatment status
 	if (missing(treatment)) {
 		stop("You should input the treatment status vector for data:
