@@ -1,5 +1,6 @@
 estimate.causalTree <- function(object, data, weights, treatment, na.action = na.causalTree)
 {
+    print("estimate.causalTree.R");
     if (!inherits(object, "rpart")) stop("Not a legitimate \"rpart\" object")
     # get the leaf of the object
     leaf <- as.numeric(row.names(object$frame)[which(object$frame$var == "<leaf>")])
