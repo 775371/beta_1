@@ -74,7 +74,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     con_var = con_sqr_sum / (twt - ttreat) - temp0 * temp0 / ((twt - ttreat) * (twt - ttreat));
    
    
-    /* T= beta_0 + beta_1 Z */
+    /* Y= beta_0 + beta_1 treatment , ONLY one pair*/
     beta_1 = (n * yz_sum - z_sum * y_sum) / (n * yy_sum - y_sum * y_sum); 
     beta_0 = (z_sum - beta_1 * y_sum) / n;
     effect = beta_1;
