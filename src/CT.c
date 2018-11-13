@@ -265,7 +265,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 
                 temp = left_effect + right_effect - node_effect;
                        /*check beta*/
-                       Rprintf("The beta_1 in function CT in CT.c is %d\n",(double)beta_1);
+                       Rprintf("The beta_1 in function CT in CT.c is %d\n",beta_1);
+                       Rprintf("The temp in function CT in CT.c is %d\n",temp);
                        
                 if (temp > best) {
                     best = temp;
