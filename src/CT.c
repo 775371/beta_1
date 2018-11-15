@@ -181,10 +181,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         
         for (i = 0; right_n > edge; i++) {
                
-            Rprintf("The wt[i] in function CT in CT.c is %d\n",(int)wt[i]);
-            Rprintf("The treatment[i] in function CT in CT.c is %d\n",(int)treatment[i]);
-            Rprintf("The y[i] in function CT in CT.c is %d\n",(int)y[i]);
-            Rprintf("The beta_1 in function CT in CT.c is %d\n",(double)beta_1);
+            
                 
                 
                 
@@ -273,7 +270,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 temp = left_effect + right_effect - node_effect;
                        /*check beta*/
                        
-                       Rprintf("The temp in function CT in CT.c is %d\n",temp);
+            Rprintf("The wt[i] in function CT in CT.c is %d\n",(int)wt[i]);
+            Rprintf("The treatment[i] in function CT in CT.c is %d\n",(int)treatment[i]);
+            Rprintf("The y[i] in function CT in CT.c is %d\n",(int)y[i]);
+            Rprintf("The beta_1 in function CT in CT.c is %d\n",(double)beta_1);
                        
                 if (temp > best) {
                     best = temp;
