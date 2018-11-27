@@ -9,7 +9,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 					   bucketMax = 100, cv.option, cv.Honest, minsize = 2L, 
 					   x = FALSE, y = TRUE, propensity, control, split.alpha = 0.5, cv.alpha = 0.5,cv.gamma=0.5,split.gamma=0.5,
 					   cost, ...){ 
-print("causaltree.R")
+#print("causaltree.R")
 	Call <- match.call()
 
 	indx <- match(c("formula", "data", "weights", "subset"),
@@ -339,7 +339,7 @@ print("causaltree.R")
 					   as.integer(HonestSampleSize),
 					   as.double(cv.gamma)
 					   )
-
+print("come out")
 		nsplit <- nrow(ctfit$isplit) # total number of splits, primary and surrogate
 		## total number of categorical splits
 		ncat <- if (!is.null(ctfit$csplit)) nrow(ctfit$csplit) else 0L
