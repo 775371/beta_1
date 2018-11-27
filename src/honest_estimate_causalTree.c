@@ -102,7 +102,7 @@ next:
         consums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i];
         trsqrsums[npos] +=  wt2[i] * treatment2[i] * y2[i] * y2[i];
         consqrsums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i] * y2[i];
-        
+        Rprintf("walk down the tree\n");
         /* walk down the tree */
         nspl = nodes[2][npos] - 1;      /* index of primary split */
         if (nspl >= 0) {        /* not a leaf node */
@@ -179,6 +179,7 @@ next:
             int parentdx = invertdx[i / 2];
             yval1[origindx] = yval1[parentdx];
             dev1[origindx] = yval1[parentdx];
+         Rprintf("The dev1[origindx] in  honest.causaltree.c is %d\n", dev1[origindx]);
         }
     }
     
