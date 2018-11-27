@@ -86,6 +86,7 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
     for (i = 0; i < dimx[1]; i++) {
         xmiss[i] = &(xmiss2[i * dimx[0]]);
         xdata[i] = &(xdata2[i * dimx[0]]);
+     Rprintf("before current node\n");
     }
     
 
@@ -182,7 +183,7 @@ next:
          Rprintf("The dev1[origindx] in  honest.causaltree.c is %d\n", dev1[origindx]);
         }
     }
-    
+    Rprintf("end the tree\n");
 }
    
 #include <Rinternals.h>
