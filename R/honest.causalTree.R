@@ -47,7 +47,8 @@ honest.causalTree <- function(formula, data, weights, treatment, subset,
 	#if (sum(treatment %in% c(0,1)) != nobs) {
 	#	stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
 	#}
-	if (sum(treatment) == 0 || sum(treatment) == nobs) {
+	if (sum(treatment) == 0  ) { #|| sum(treatment) == nobs
+	  
 		stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
 	}
 
@@ -83,7 +84,7 @@ honest.causalTree <- function(formula, data, weights, treatment, subset,
 	#if (sum(est_treatment %in% c(0,1)) != est_nobs) {
 	#    stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
 	#}
-	if (sum(est_treatment) == 0 || sum(est_treatment) == est_nobs) {
+	if (sum(est_treatment) == 0 ) { #|| sum(est_treatment) == est_nobs
 	    stop("The data only contains treated cases or controlled cases, please check 'est_treatment' again.") 
 	}
 	
