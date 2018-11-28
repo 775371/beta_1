@@ -193,7 +193,10 @@ next:
                 + consqrsums[origindx] - cons[origindx] * con_mean * con_mean;*/
            yval1[origindx] =  (wt1 * yz_sum - z_sum * y_sum) / (wt1 * yy_sum - y_sum * y_sum);;
            dev1[origindx] = trsqrsums[origindx] -  tr_mean * tr_mean;
-            
+           
+           Rprintf("The trsqrsums in  honest.causaltree.c is %d\n", trsqrsums);
+           Rprintf("The consqrsums in  honest.causaltree.c is %d\n", consqrsums);
+           
         } else {
             int parentdx = invertdx[i / 2];
             yval1[origindx] = yval1[parentdx];
