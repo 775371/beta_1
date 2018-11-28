@@ -35,8 +35,11 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
     int nnodemax = -1;
     int *invertdx = NULL;
     /*add beta*/
-    double  y_sum = 0., z_sum = 0.;
-    double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
+    double  *y_sum= NULL; 
+    double  *z_sum =  NULL;
+    double *yz_sum = NULL;
+    double *yy_sum = NULL;
+    double *zz_sum = NULL;
    
     
     trs = (double *) ALLOC(nnode, sizeof(double));
@@ -131,12 +134,12 @@ next:
      
         consqrsums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i] * y2[i];
         
-        y_sum[npos] += treatment2[npos];
-        z_sum[npos] += y2[npos];
-        yz_sum[npos] += y2[npos] * treatment2[npos];
+        y_sum[npos] += treatment2[i];
+        z_sum[npos] += y2[i];
+        yz_sum[npos] += y2[i] * treatment2[i];
        
-        yy_sum[npos] += treatment2[npos] * treatment2[npos];
-        zz_sum[npos] += *y2[npos] * *y2[npos];
+        yy_sum[npos] += treatment2[i] * treatment2[i];
+        zz_sum[npos] += *y2[i] * *y2[i];
      
         Rprintf("walk down the tree\n");
         /* walk down the tree */
