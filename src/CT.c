@@ -317,11 +317,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             trsums[i] = 0;
             wtsqrsums[i] = 0;
             trsqrsums[i] = 0;
-            /*y_sum[i] = 0;
+            y_sum[i] = 0;
             z_sum[i] = 0;
             yz_sum[i] = 0;  
             yy_sum[i] = 0; 
-            zz_sum[i] = 0;*/
+            zz_sum[i] = 0;
         }
         
         /* rank the classes by treatment effect */
