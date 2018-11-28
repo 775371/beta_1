@@ -98,15 +98,21 @@ next:
 
         n1[npos]++;
         wt1[npos] += wt2[i];
+     
+     
         trs[npos] += wt2[i] * treatment2[i];
         cons[npos] += wt2[i] * (1 - treatment2[i]);
-        trsums[npos] += wt2[i] * treatment2[i] * y2[i];
+        /*trsums[npos] += wt2[i] * treatment2[i] * y2[i];*/
+      /* add variable*/
+        trsums[npos] += wt2[i]  * y2[i];
+       
+     
         consums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i];
-        trsqrsums[npos] +=  wt2[i] * treatment2[i] * y2[i] * y2[i];
+        /*trsqrsums[npos] +=  wt2[i] * treatment2[i] * y2[i] * y2[i];*/
+      trsqrsums[npos] +=  wt2[i]  * y2[i] * y2[i];
+     
         consqrsums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i] * y2[i];
-     /* add variable*/
-        ttsums[npos] += wt2[i]  * y2[i];
-        ttsqrsums[npos] +=  wt2[i]  * y2[i] * y2[i];
+    
      
         Rprintf("walk down the tree\n");
         /* walk down the tree */
@@ -176,15 +182,17 @@ next:
         int origindx = invertdx[i];
      Rprintf("The origindx in  honest.causaltree.c is %d\n", origindx);
         //base case
-        if (trs[origindx] != 0 && cons[origindx] != 0) {
-          
-            double tr_mean = trsums[origindx] * 1.0 / trs[origindx];
+        /*if (trs[origindx] != 0 && cons[origindx] != 0) {*/
+          if (trs[origindx] != 0 && cons[origindx] != 0) {
+            /*double tr_mean = trsums[origindx] * 1.0 / trs[origindx];*/
+            double tr_mean = trsums[origindx] * 1.0 / wt1[origindx];
             double con_mean = consums[origindx] * 1.0 / cons[origindx];
-            double tt_mean = ttsums[origindx] * 1.0 / wt1[origindx];
-            yval1[origindx] = tr_mean - con_mean;
+           
+            /*yval1[origindx] = tr_mean - con_mean;*/
             /*dev1[origindx] = trsqrsums[origindx] - trs[origindx] * tr_mean * tr_mean 
                 + consqrsums[origindx] - cons[origindx] * con_mean * con_mean;*/
-           dev1[origindx] = ttsqrsums[origindx] -  tt_mean * tt_mean;
+           yval1[origindx] = tr_mean;
+           dev1[origindx] = trsqrsums[origindx] -  tr_mean * tr_mean;
             
         } else {
             int parentdx = invertdx[i / 2];
