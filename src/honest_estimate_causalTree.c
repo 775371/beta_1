@@ -181,10 +181,11 @@ next:
             int parentdx = invertdx[i / 2];
             yval1[origindx] = yval1[parentdx];
             dev1[origindx] = yval1[parentdx];
-         Rprintf("The dev1[origindx] in  honest.causaltree.c is %d\n", dev1[origindx]);
+         
         }
     }
     Rprintf("end the tree\n");
+    Rprintf("The dev1[origindx] in  honest.causaltree.c is %d\n", dev1[origindx]);
 }
    
 #include <Rinternals.h>
