@@ -318,7 +318,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             wtsqrsums[i] = 0;
             trsqrsums[i] = 0;
                 
-            /*twt[i] = 0;
+            twt[i] = 0;
             y_sum[i] = 0;
             z_sum[i] = 0;
             yz_sum[i] = 0;  
