@@ -302,6 +302,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     * Categorical predictor
     */
     else {
+            Rprintf("come in Categorical predictor\n");
         for (i = 0; i < nclass; i++) {
             countn[i] = 0;
             wts[i] = 0;
@@ -336,7 +337,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 tsplit[i] = 0;
                 
         }
-            Rprintf("come out from Categorical predictor\n");
+            
         graycode_init2(nclass, countn, treatment_effect);
             
         
