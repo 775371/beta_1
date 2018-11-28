@@ -294,7 +294,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             *split = (x[where] + x[where + 1]) / 2; 
         }
     }
-    Rprintf("The nclass in function CT in CT.c is %d\n",(int)nclass);
+    
     /*
     * Categorical predictor
     */
@@ -321,6 +321,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             trsums[j] += *y[i] * wt[i] * treatment[i];
             wtsqrsums[j] += (*y[i]) * (*y[i]) * wt[i];
             trsqrsums[j] +=  (*y[i]) * (*y[i]) * wt[i] * treatment[i];
+            Rprintf("The nclass in function CT in CT.c is %d\n",(int)nclass);
         }
         
         for (i = 0; i < nclass; i++) {
