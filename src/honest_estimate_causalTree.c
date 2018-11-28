@@ -191,7 +191,7 @@ next:
             /*yval1[origindx] = tr_mean - con_mean;*/
             /*dev1[origindx] = trsqrsums[origindx] - trs[origindx] * tr_mean * tr_mean 
                 + consqrsums[origindx] - cons[origindx] * con_mean * con_mean;*/
-           yval1[origindx] = tr_mean;
+           yval1[origindx] =  (wt1 * yz_sum - z_sum * y_sum) / (wt1 * yy_sum - y_sum * y_sum);;
            dev1[origindx] = trsqrsums[origindx] -  tr_mean * tr_mean;
             
         } else {
