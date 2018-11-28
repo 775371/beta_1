@@ -34,6 +34,10 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
     double *consqrsums = NULL;
     int nnodemax = -1;
     int *invertdx = NULL;
+    /*add beta*/
+    double  y_sum = 0., z_sum = 0.;
+    double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
+   
     
     trs = (double *) ALLOC(nnode, sizeof(double));
     cons = (double *) ALLOC(nnode, sizeof(double));
@@ -41,8 +45,14 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
     consums = (double *) ALLOC(nnode, sizeof(double));
     trsqrsums = (double *) ALLOC(nnode, sizeof(double));
     consqrsums = (double *) ALLOC(nnode, sizeof(double));
-
     
+    /*add beta*/
+    y_sum= (double *) ALLOC(nnode, sizeof(double));
+    z_sum = (double *) ALLOC(nnode, sizeof(double));
+    yz_sum = (double *) ALLOC(nnode, sizeof(double));
+    yy_sum = (double *) ALLOC(nnode, sizeof(double));
+    zz_sum = (double *) ALLOC(nnode, sizeof(double));
+     
     // initialize:
     for (i = 0; i < nnode; i++) {
         trs[i] = 0.;
@@ -51,6 +61,14 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
         consums[i] = 0.;
         trsqrsums[i] = 0.;
         consqrsums[i] = 0.;
+     /* add */
+     y_sum[i] = 0.;
+     z_sum[i] = 0.;
+     yz_sum[i] = 0.;
+     yy_sum[i] = 0.;
+     zz_sum[i] = 0.;
+     
+     
         n1[i] = 0;
         wt1[i] = 0.;
         if (nnum[i] > nnodemax) {
@@ -109,10 +127,16 @@ next:
      
         consums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i];
         /*trsqrsums[npos] +=  wt2[i] * treatment2[i] * y2[i] * y2[i];*/
-      trsqrsums[npos] +=  wt2[i]  * y2[i] * y2[i];
+        trsqrsums[npos] +=  wt2[i]  * y2[i] * y2[i];
      
         consqrsums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i] * y2[i];
-    
+        
+        y_sum[npos] += treatment2[npos];
+        z_sum[npos] += y2[npos];
+        yz_sum[npos] += y2[npos] * treatment2[npos];
+       
+        yy_sum[npos] += treatment2[npos] * treatment2[npos];
+        zz_sum[npos] += *y2[npos] * *y2[npos];
      
         Rprintf("walk down the tree\n");
         /* walk down the tree */
@@ -187,12 +211,13 @@ next:
             /*double tr_mean = trsums[origindx] * 1.0 / trs[origindx];*/
             double tr_mean = trsums[origindx] * 1.0 / wt1[origindx];
             double con_mean = consums[origindx] * 1.0 / cons[origindx];
+            double tt_mean =  yy_sum[origindx]* 1.0 / wt1[origindx];
            
             /*yval1[origindx] = tr_mean - con_mean;*/
             /*dev1[origindx] = trsqrsums[origindx] - trs[origindx] * tr_mean * tr_mean 
                 + consqrsums[origindx] - cons[origindx] * con_mean * con_mean;*/
-           yval1[origindx] =  (wt1 * yz_sum - z_sum * y_sum) / (wt1 * yy_sum - y_sum * y_sum);;
-           dev1[origindx] = trsqrsums[origindx] -  tr_mean * tr_mean;
+           yval1[origindx] =  (wt1[origindx] * yz_sum[origindx] - z_sum[origindx] * y_sum[origindx]) / (wt1[origindx] * yy_sum[origindx] - y_sum[origindx] * y_sum[origindx]);
+           dev1[origindx] = yy_sum[origindx] -  tt_mean * tt_mean;
            
            Rprintf("The trsqrsums in  honest.causaltree.c is %d\n", trsqrsums);
            Rprintf("The consqrsums in  honest.causaltree.c is %d\n", consqrsums);
