@@ -132,7 +132,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     double   beta_sqr_sum = 0.,  var_beta = 0.; /* beta*/
     
         
-        
+    double  twt = 0.; 
     double  y_sum = 0., z_sum = 0.;
     double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
     
