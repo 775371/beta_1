@@ -86,7 +86,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     //*risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + 
     //(1 - alpha) * (1 + train_to_est_ratio) * twt * (tr_var /ttreat  + con_var / (twt - ttreat));
     *risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + (1 - alpha) * (1 + train_to_est_ratio) * twt * ( var_beta);
-        
+        Rprintf("The nclass in function CT in CT.c is %d\n",(int)nclass);  
  }
 
 
@@ -97,6 +97,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         int *csplit, double myrisk, double *wt, double *treatment,  int minsize, double alpha,
         double train_to_est_ratio)
 {
+          Rprintf("start in function CT in CT.c is %d\n");
     int i, j;
     double temp;
     double left_sum, right_sum;
@@ -165,7 +166,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (var_beta);
     
-       Rprintf("The nclass in function CT in CT.c is %d\n",(int)nclass);
+     
         
     
     if (nclass == 0) {
@@ -448,6 +449,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         }
         *improve = best;
     }
+         Rprintf("End function CT in CT.c is %d\n");
 }
 
 
