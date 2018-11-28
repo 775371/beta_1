@@ -149,7 +149,9 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         right_zz_sum += *y[i] * *y[i];
     }
 
-   
+    Rprintf("The nclass in function CT in CT.c is %d\n",(int)nclass);  
+        
+        
     beta_1 = (right_wt * right_yz_sum - right_z_sum * right_y_sum) / (right_wt * right_yy_sum - right_y_sum * right_y_sum);
     beta_0 = (right_z_sum - beta_1 * right_y_sum) / right_wt;
     temp = beta_1;
