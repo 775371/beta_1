@@ -83,6 +83,7 @@ honest_estimate_causalTree0(const int *dimx, int nnode, int nsplit, const int *d
     }
     xmiss = (const int **) ALLOC((int) dimx[1], sizeof(int *));
     xdata = (const double **) ALLOC((int) dimx[1], sizeof(double *));
+     Rprintf("The dimx  in honest_estimate_causalTree.c is %d\n", dimx);
     for (i = 0; i < dimx[1]; i++) {
         xmiss[i] = &(xmiss2[i * dimx[0]]);
         xdata[i] = &(xdata2[i * dimx[0]]);
