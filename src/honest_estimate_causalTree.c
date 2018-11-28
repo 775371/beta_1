@@ -185,6 +185,7 @@ next:
          
         }
     Rprintf("The dev1 in honest.causaltree.c is %d\n", dev1);
+    Rprintf("The yval1 in honest.causaltree.c is %d\n", yval1);
     }
     Rprintf("end the tree\n");
     
