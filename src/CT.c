@@ -330,8 +330,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 treatment_effect[i] = trsums[j] / trs[j];
             } else
                 tsplit[i] = 0;
+                
         }
+            Rprintf("come out from Categorical predictor\n");
         graycode_init2(nclass, countn, treatment_effect);
+            
         
         /*
          * Now find the split that we want
