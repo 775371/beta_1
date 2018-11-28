@@ -318,7 +318,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             wtsqrsums[i] = 0;
             trsqrsums[i] = 0;
                 
-            twt[i] = 0;
+           /* twt[i] = 0;
             y_sum[i] = 0;
             z_sum[i] = 0;
             yz_sum[i] = 0;  
@@ -339,20 +339,20 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             trsqrsums[j] +=  (*y[i]) * (*y[i]) * wt[i] * treatment[i];
             
             
-            twt[j] += wt[i];
+            /*twt[j] += wt[i];
             y_sum[j] += treatment[i];
             z_sum[j] += *y[i];
             yz_sum[j] += *y[i] * treatment[i];
             yy_sum[j] += treatment[i] * treatment[i];
-            zz_sum[j] += *y[i] * *y[i];
+            zz_sum[j] += *y[i] * *y[i];*/
             
         }
         
         for (i = 0; i < nclass; i++) {
             if (countn[i] > 0) {
                 tsplit[i] = RIGHT;
-                /*treatment_effect[i] = trsums[j] / trs[j] - (wtsums[j] - trsums[j]) / (wts[j] - trs[j]);*/
-                treatment_effect[i] = ( twt[j] * yz_sum[j] - z_sum[j] * y_sum[j]) / (twt[j] * yy_sum[j] - y_sum[j] * y_sum[j]); 
+                treatment_effect[i] = trsums[j] / trs[j] - (wtsums[j] - trsums[j]) / (wts[j] - trs[j]);*/
+                /*treatment_effect[i] = ( twt[j] * yz_sum[j] - z_sum[j] * y_sum[j]) / (twt[j] * yy_sum[j] - y_sum[j] * y_sum[j]); */
             } else
                 tsplit[i] = 0;
                 
