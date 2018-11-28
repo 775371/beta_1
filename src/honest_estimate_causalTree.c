@@ -139,7 +139,7 @@ next:
         yz_sum[npos] += y2[i] * treatment2[i];
        
         yy_sum[npos] += treatment2[i] * treatment2[i];
-        zz_sum[npos] += *y2[i] * *y2[i];
+        zz_sum[npos] += y2[i] * y2[i];
      
         Rprintf("walk down the tree\n");
         /* walk down the tree */
