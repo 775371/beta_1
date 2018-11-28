@@ -134,12 +134,12 @@ next:
      
         consqrsums[npos] += wt2[i] * (1 - treatment2[i]) * y2[i] * y2[i];
         
-        y_sum[npos] += treatment2[i];
-        z_sum[npos] += y2[i];
-        yz_sum[npos] += y2[i] * treatment2[i];
+        y_sum[npos] += wt2[i] * treatment2[i];
+        z_sum[npos] += wt2[i] * y2[i];
+        yz_sum[npos] += wt2[i] * y2[i] * treatment2[i];
        
-        yy_sum[npos] += treatment2[i] * treatment2[i];
-        zz_sum[npos] += y2[i] * y2[i];
+        yy_sum[npos] += wt2[i] * treatment2[i] * treatment2[i];
+        zz_sum[npos] += wt2[i] * y2[i] * y2[i];
      
         Rprintf("walk down the tree\n");
         /* walk down the tree */
