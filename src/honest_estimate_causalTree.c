@@ -184,6 +184,7 @@ next:
             dev1[origindx] = yval1[parentdx];
          
         }
+    Rprintf("The dev1 in honest.causaltree.c is %d\n", dev1);
     }
     Rprintf("end the tree\n");
     
