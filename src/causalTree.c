@@ -236,6 +236,7 @@ causalTree(SEXP ncat2, SEXP split_Rule2, SEXP bucketnum2, SEXP bucketMax2, SEXP 
                 ct.xtemp[k] = ct.xdata[i][k];
             }
         }
+               Rprintf("ncat in cuasal tree.c is %d\n", ncat);
         if (ncat[i] == 0)
             mysort(0, n - 1, ct.xtemp, ct.tempvec);
         else if (ncat[i] > maxcat)
