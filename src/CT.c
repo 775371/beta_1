@@ -318,12 +318,12 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             wtsqrsums[i] = 0;
             trsqrsums[i] = 0;
                 
-            twt[i] = 0;
+            /*twt[i] = 0;
             y_sum[i] = 0;
             z_sum[i] = 0;
             yz_sum[i] = 0;  
             yy_sum[i] = 0; 
-            zz_sum[i] = 0;
+            zz_sum[i] = 0;*/
         }
         
         /* rank the classes by treatment effect */
@@ -337,15 +337,14 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             trsums[j] += *y[i] * wt[i] * treatment[i];
             wtsqrsums[j] += (*y[i]) * (*y[i]) * wt[i];
             trsqrsums[j] +=  (*y[i]) * (*y[i]) * wt[i] * treatment[i];
+            
+            
             twt[j] += wt[i];
-        
-        
-        y_sum[j] += treatment[i];
-        z_sum[j] += *y[i];
-        yz_sum[j] += *y[i] * treatment[i];
-       
-        yy_sum[j] += treatment[i] * treatment[i];
-        zz_sum[j] += *y[i] * *y[i];
+            y_sum[j] += treatment[i];
+            z_sum[j] += *y[i];
+            yz_sum[j] += *y[i] * treatment[i];
+            yy_sum[j] += treatment[i] * treatment[i];
+            zz_sum[j] += *y[i] * *y[i];
             
         }
         
