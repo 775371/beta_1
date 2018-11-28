@@ -165,11 +165,12 @@ next:
         }
         where[i] = node;
     }
-    
+    Rprintf("The nnodemax in  honest.causaltree.c is %d\n", nnodemax);
     for (i = 0; i <= nnodemax; i++) {
         if (invertdx[i] == -1)
             continue;
         int origindx = invertdx[i];
+     Rprintf("The origindx in  honest.causaltree.c is %d\n", origindx);
         //base case
         if (trs[origindx] != 0 && cons[origindx] != 0) {
             double tr_mean = trsums[origindx] * 1.0 / trs[origindx];
@@ -185,7 +186,7 @@ next:
         }
     }
     Rprintf("end the tree\n");
-    Rprintf("The dev1[origindx] in  honest.causaltree.c is %d\n", dev1[origindx]);
+    
 }
    
 #include <Rinternals.h>
