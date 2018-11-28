@@ -130,7 +130,12 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     double  beta_1 = 0., beta_0 = 0.;
     
     double   beta_sqr_sum = 0.,  var_beta = 0.; /* beta*/
+    
         
+        
+    double  y_sum = 0., z_sum = 0.;
+    double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
+    
         
     for (i = 0; i < n; i++) {
         right_wt += wt[i];
