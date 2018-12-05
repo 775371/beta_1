@@ -76,7 +76,7 @@ CTH_rundown(pNode tree, int obs, double *cp, double *xpred, double *xtemp, int k
         if (trs == 0) {
             tr_mean = tree->parent->xtreatMean[0];
             tr_var = 0;
-        } else {
+        } else {Rprintf("else trs in CTH_rundown.c %d.\n", trs);
             tr_mean = trsums / trs;
             tree->xtreatMean[0] = tr_mean;
             tr_var = tr_sqr_sum / trs - tr_mean * tr_mean;
