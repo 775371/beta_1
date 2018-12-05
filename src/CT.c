@@ -86,7 +86,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     //*risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + 
     //(1 - alpha) * (1 + train_to_est_ratio) * twt * (tr_var /ttreat  + con_var / (twt - ttreat));
     *risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + (1 - alpha) * (1 + train_to_est_ratio) * twt * ( var_beta);
-       
+      Rprintf("twt in CTss in CT.c %d.\n", twt); 
  }
 
 
@@ -170,9 +170,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
    /* node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (tr_var / right_tr  + con_var / (right_wt - right_tr));*/
    
+        Rprintf("right_wt in CT in CT.c %d.\n", right_wt);
+        
     node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (var_beta);
-    
+   
      
         
     
