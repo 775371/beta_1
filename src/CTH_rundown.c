@@ -89,14 +89,15 @@ CTH_rundown(pNode tree, int obs, double *cp, double *xpred, double *xtemp, int k
         }
        
         if (cons == 0) {
-Rprintf("92"); 
-            con_mean = tree->parent->xcontrolMean[0];
-Rprintf("94"); 		
+Rprintf("92");
+		Rprintf("tree in CTH_rundown.c %d.\n", tree);
+           // con_mean = tree->parent->xcontrolMean[0];
+ con_mean =0;		
             con_var = 0;
 		Rprintf("96"); 	
         } 
 	    else {
-		 Rprintf("98"); 
+		
             con_mean = consums / cons;
             tree->xcontrolMean[0] = con_mean;
             con_var = con_sqr_sum / cons - con_mean * con_mean;
