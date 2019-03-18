@@ -208,7 +208,8 @@ print("honest.causalTree.R")
 	xvar <- apply(X, 2, var)
 	method <- "anova"
 	method.int <- 1
-
+	
+         print("before ct")
 	# ------------------------------------- cv begins -------------------------------------- #
 	if (missing(cv.option)) {
 		# temporarily, no crossvalidation 
@@ -346,7 +347,7 @@ print("honest.causalTree.R")
 		storage.mode(wt) <- "double"
 		storage.mode(treatment) <- "double"
 		minsize <- as.integer(minsize) # minimum number of obs for treated and control cases in one leaf node
-                print("before ct")
+               
 	
 		ctfit <- .Call(C_causalTree,
 					   ncat = as.integer(cats * !isord),
