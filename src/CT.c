@@ -82,7 +82,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     effect = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
     for (i = 0; i < n; i++) {
-      z_hat_sum += (y[i]-beta_0-beta_1*treatment[i])* (y[i]-beta_0-beta_1*treatment[i]);
+      z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
     }
      
         
@@ -170,7 +170,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_sqr_sum = beta_1 * beta_1 ;
        
     for (i = 0; i < n; i++) {
-      z_hat_sum += (y[i]-beta_0-beta_1*treatment[i]) * (y[i]-beta_0-beta_1*treatment[i]);
+      z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
      
         
