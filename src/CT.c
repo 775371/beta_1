@@ -67,7 +67,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
        
         yy_sum += treatment[i] * treatment[i];
         zz_sum += *y[i] * *y[i];
-        z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
+        //z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
     }
 
    
@@ -78,9 +78,9 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
    
     /* Y= beta_0 + beta_1 treatment , ONLY one pair*/
    
-    /*for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {
       z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
-    }*/
+    }
      
     beta_1 = (twt * yz_sum - z_sum * y_sum) / (twt * yy_sum - y_sum * y_sum); 
     beta_0 = (z_sum - beta_1 * y_sum) / twt;
@@ -92,6 +92,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     *tr_mean = temp1 / ttreat;
     *con_mean = temp0 / (twt - ttreat);
     *value = effect;
+        
     //*risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + 
     //(1 - alpha) * (1 + train_to_est_ratio) * twt * (tr_var /ttreat  + con_var / (twt - ttreat));
     *risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + (1 - alpha) * (1 + train_to_est_ratio) * twt * ( var_beta);
@@ -258,7 +259,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_sqr_sum = beta_1 * beta_1 ;
     
                
-    z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
+    //z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
      
                        
     var_beta = (z_hat_sum/(left_wt-2)) / (left_yy_sum -left_y_sum * left_y_sum/left_wt) ;
@@ -284,7 +285,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     right_temp = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
                        
-    z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
+   // z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     
     var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum -right_y_sum * right_y_sum/right_wt) ;
                        
