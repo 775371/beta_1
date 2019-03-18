@@ -50,7 +50,8 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
     double  beta_1 = 0.;
     double beta_0 = 0.;    
-        
+    
+    double z_hat_sum=0.; 
         
     for (i = 0; i < n; i++) {
         temp1 += *y[i] * wt[i] * treatment[i];
@@ -66,6 +67,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
        
         yy_sum += treatment[i] * treatment[i];
         zz_sum += *y[i] * *y[i];
+        
     }
 
    
@@ -79,7 +81,12 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     beta_0 = (z_sum - beta_1 * y_sum) / twt;
     effect = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
-    var_beta = beta_sqr_sum / twt - beta_1 * beta_1 / (twt * twt);
+    for (i = 0; i < n; i++) {
+      z_hat_sum += (y[i]-beta_0-beta_1*treatment[i])^2;
+    }
+     
+        
+    var_beta = (z_hat_sum/(twt-1))/(yy_sum-yy_sum/twt)) ;
     *tr_mean = temp1 / ttreat;
     *con_mean = temp0 / (twt - ttreat);
     *value = effect;
@@ -135,7 +142,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     double  twt = 0.; 
     double  y_sum = 0., z_sum = 0.;
     double yz_sum = 0.,  yy_sum = 0., zz_sum = 0.;
-    
+    double z_hat_sum=0.;
         
     for (i = 0; i < n; i++) {
         right_wt += wt[i];
@@ -161,7 +168,17 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_0 = (right_z_sum - beta_1 * right_y_sum) / right_wt;
     temp = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
-    var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
+       
+    for (i = 0; i < n; i++) {
+      z_hat_sum += (y[i]-beta_0-beta_1*treatment[i])^2;
+    }
+     
+        
+    var_beta = (z_hat_sum/(right_wt-1)) / (right_yy_sum-right_yy_sum/right_wt)) ;
+        
+        
+        
+    //var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
     //temp = right_tr_sum / right_tr - (right_sum - right_tr_sum) / (right_wt - right_tr);
     tr_var = right_tr_sqr_sum / right_tr - right_tr_sum * right_tr_sum / (right_tr * right_tr);
     con_var = (right_sqr_sum - right_tr_sqr_sum) / (right_wt - right_tr)
@@ -241,6 +258,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_wt;
     left_temp = beta_1;
          beta_sqr_sum = beta_1 * beta_1 ;
+                       
+                       
     var_beta = beta_sqr_sum / left_wt - beta_1 * beta_1 / (left_wt * left_wt);
     
    
