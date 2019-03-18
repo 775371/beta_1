@@ -87,7 +87,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     effect = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
         
-    var_beta = (z_hat_sum/(twt-2))/(yy_sum-y_sum * y_sum/twt) ;
+    var_beta = (z_hat_sum/(twt-2))/(yy_sum - y_sum * y_sum/twt) ;
         
     *tr_mean = temp1 / ttreat;
     *con_mean = temp0 / (twt - ttreat);
@@ -107,7 +107,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         int *csplit, double myrisk, double *wt, double *treatment,  int minsize, double alpha,
         double train_to_est_ratio)
 {
-          Rprintf("start in function CT in CT.c is %d\n");
+          
     int i, j;
     double temp;
     double left_sum, right_sum;
@@ -189,9 +189,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         / ((right_wt - right_tr) * (right_wt - right_tr));
    /* node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (tr_var / right_tr  + con_var / (right_wt - right_tr));*/
-   
-       
-        
+  
     node_effect = alpha * temp * temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
         * right_wt * (var_beta);
    
@@ -249,13 +247,13 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 (int) right_tr >= min_node_size &&
                 (int) right_wt - (int) right_tr >= min_node_size) {  */                           
                                             
-               if (x[i + 1] != x[i] &&
+               if (x[i + 1] != x[i] && left_n >= edge &&
                 (int) left_wt >= min_node_size &&
                 (int) right_wt  >= min_node_size) {
                      
     beta_1 = (left_wt * left_yz_sum - left_z_sum * left_y_sum) / (left_wt * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_wt;
-    left_temp = beta_1;
+    
     beta_sqr_sum = beta_1 * beta_1 ;
     
                
@@ -266,7 +264,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                  
     //var_beta = beta_sqr_sum / left_wt - beta_1 * beta_1 / (left_wt * left_wt);
     
-   
+    left_temp = beta_1;
     left_effect = left_temp * left_temp * left_wt - (1 - alpha) * (1 + train_to_est_ratio) 
                     * left_wt * (var_beta);
                    
@@ -282,7 +280,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
 
     beta_1 = (right_wt * right_yz_sum - right_z_sum * right_y_sum) / (right_wt * right_yy_sum - right_y_sum * right_y_sum);
     beta_0 = (right_z_sum - beta_1 * right_y_sum) / right_wt;
-    right_temp = beta_1;
+    
     beta_sqr_sum = beta_1 * beta_1 ;
                        
    // z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
@@ -291,7 +289,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                        
     //var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
     
-   
+    right_temp = beta_1;
     right_effect = right_temp * right_temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
                     * right_wt * (var_beta);
                     
