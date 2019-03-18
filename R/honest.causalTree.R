@@ -156,10 +156,10 @@ print("honest.causalTree.R")
 	
 	## check the Split.Honest == T/F
 	split.Honest.num <- pmatch(split.Honest, c(T, F))
-	print("159")
+	
 	if(is.na(split.Honest.num)) 
 		stop("Invalid split.Honest input, split.Honest can be only TRUE or FALSE.")
-print("162")
+
 	if (split.Honest == TRUE && split.Rule.int %in% c(2, 3, 4, 6, 7, 8, 9, 10,11,12)) {
 		# ct, fit, tstats, ctd, fitd, tstatsd, user, userd,policy,policyD:
 		if(missing(split.alpha)) {
@@ -171,7 +171,7 @@ print("162")
 				stop("Invalid input for split.alpha. split.alpha should between 0 and 1.")
 			}
 		}
-		print("174")
+		
 	  #check for gamma for policy
 	  if(missing(split.gamma)) {
 	    # set default honest splitting alpha to 0.5
@@ -200,7 +200,7 @@ print("162")
 		
 	}
 
-print("203")
+
 	# check propensity score:
 	if (split.Rule %in% c("TOT", "TOTD", "fit", "fitD")) {
 		if (propensity > 1 || propensity < 0) {
