@@ -153,6 +153,7 @@ print("honest.causalTree.R")
 		}
 	}
 
+	print("156")
 	## check the Split.Honest == T/F
 	split.Honest.num <- pmatch(split.Honest, c(T, F))
 	if(is.na(split.Honest.num)) 
@@ -209,7 +210,7 @@ print("honest.causalTree.R")
 	method <- "anova"
 	method.int <- 1
 	
-         print("before ct")
+         print("212")
 	# ------------------------------------- cv begins -------------------------------------- #
 	if (missing(cv.option)) {
 		# temporarily, no crossvalidation 
@@ -347,7 +348,7 @@ print("honest.causalTree.R")
 		storage.mode(wt) <- "double"
 		storage.mode(treatment) <- "double"
 		minsize <- as.integer(minsize) # minimum number of obs for treated and control cases in one leaf node
-               
+               print("351")
 	
 		ctfit <- .Call(C_causalTree,
 					   ncat = as.integer(cats * !isord),
