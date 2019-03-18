@@ -178,8 +178,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
      
         
     var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum-right_y_sum * right_y_sum/right_wt) ;
-        
-    temp = beta_1;  
+    temp=beta_1;  
+    
         
     //var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
     //temp = right_tr_sum / right_tr - (right_sum - right_tr_sum) / (right_wt - right_tr);
@@ -253,16 +253,13 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                      
     left_temp = (left_wt * left_yz_sum - left_z_sum * left_y_sum) / (left_wt * left_yy_sum - left_y_sum * left_y_sum);
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_wt;
-    
-    beta_sqr_sum = beta_1 * beta_1 ;
-    
-               
+            
     //z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
      
                        
-    var_beta = (z_hat_sum/(left_wt-2)) / (left_yy_sum -left_y_sum * left_y_sum/left_wt) ;
+    //var_beta = (z_hat_sum/(left_wt-2)) / (left_yy_sum -left_y_sum * left_y_sum/left_wt) ;
                  
-    //var_beta = beta_sqr_sum / left_wt - beta_1 * beta_1 / (left_wt * left_wt);
+    var_beta = beta_sqr_sum / left_wt - beta_1 * beta_1 / (left_wt * left_wt);
     
     
     left_effect = left_temp * left_temp * left_wt - (1 - alpha) * (1 + train_to_est_ratio) 
@@ -278,18 +275,18 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                         - (1 - alpha) * (1 + train_to_est_ratio) * left_wt 
                     * (left_tr_var / left_tr + left_con_var / (left_wt - left_tr));*/         
 
-    right_temp = (right_wt * right_yz_sum - right_z_sum * right_y_sum) / (right_wt * right_yy_sum - right_y_sum * right_y_sum);
+    beta_1 = (right_wt * right_yz_sum - right_z_sum * right_y_sum) / (right_wt * right_yy_sum - right_y_sum * right_y_sum);
     beta_0 = (right_z_sum - beta_1 * right_y_sum) / right_wt;
     
     beta_sqr_sum = beta_1 * beta_1 ;
                        
    // z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     
-    var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum -right_y_sum * right_y_sum/right_wt) ;
+    //var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum -right_y_sum * right_y_sum/right_wt) ;
                        
-    //var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
+    var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
     
-    
+    right_temp=beta_1;
     right_effect = right_temp * right_temp * right_wt - (1 - alpha) * (1 + train_to_est_ratio) 
                     * right_wt * (var_beta);
                     
