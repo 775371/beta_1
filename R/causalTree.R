@@ -38,7 +38,7 @@ causalTree <- function(formula, data, weights, treatment, subset,
 	nvar <- ncol(X)
 	#treatment <- m$`(treatment)`
         #find sample
-	#print(X)
+	print(X)
 	
 	
 	## requirement for treatment status
