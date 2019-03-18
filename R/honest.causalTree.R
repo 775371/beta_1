@@ -350,7 +350,7 @@ print("honest.causalTree.R")
 		storage.mode(wt) <- "double"
 		storage.mode(treatment) <- "double"
 		minsize <- as.integer(minsize) # minimum number of obs for treated and control cases in one leaf node
-               print("351")
+              
 	
 		ctfit <- .Call(C_causalTree,
 					   ncat = as.integer(cats * !isord),
