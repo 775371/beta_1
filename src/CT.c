@@ -176,7 +176,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     }
      
         
-    var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum/right_wt-right_y_sum * right_y_sum/right_wt) ;
+    var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum-right_y_sum * right_y_sum/right_wt) ;
         
         
         
@@ -209,11 +209,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         best = 0;
         
         for (i = 0; right_n > edge; i++) {
-               
-            
-                
-                
-                
+       
             left_wt += wt[i];
             right_wt -= wt[i];
             left_tr += wt[i] * treatment[i];
@@ -260,9 +256,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     beta_0 = (left_z_sum - beta_1 * left_y_sum) / left_wt;
     left_temp = beta_1;
     beta_sqr_sum = beta_1 * beta_1 ;
-                  
-    z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     
+               
+    z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
+     
+                       
     var_beta = (z_hat_sum/(left_wt-2)) / (left_yy_sum -left_y_sum * left_y_sum/left_wt) ;
                  
     //var_beta = beta_sqr_sum / left_wt - beta_1 * beta_1 / (left_wt * left_wt);
