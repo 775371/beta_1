@@ -77,15 +77,15 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
    
    
     /* Y= beta_0 + beta_1 treatment , ONLY one pair*/
-    beta_1 = (twt * yz_sum - z_sum * y_sum) / (twt * yy_sum - y_sum * y_sum); 
-    beta_0 = (z_sum - beta_1 * y_sum) / twt;
-    effect = beta_1;
-    beta_sqr_sum = beta_1 * beta_1 ;
+   
     for (i = 0; i < n; i++) {
       z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
     }
      
-        
+    beta_1 = (twt * yz_sum - z_sum * y_sum) / (twt * yy_sum - y_sum * y_sum); 
+    beta_0 = (z_sum - beta_1 * y_sum) / twt;
+    effect = beta_1;
+    beta_sqr_sum = beta_1 * beta_1 ; 
     var_beta = (z_hat_sum/(twt-1))/(yy_sum-y_sum * y_sum/twt) ;
     *tr_mean = temp1 / ttreat;
     *con_mean = temp0 / (twt - ttreat);
@@ -93,7 +93,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     //*risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + 
     //(1 - alpha) * (1 + train_to_est_ratio) * twt * (tr_var /ttreat  + con_var / (twt - ttreat));
     *risk = 4 * twt * max_y * max_y - alpha * twt * effect * effect + (1 - alpha) * (1 + train_to_est_ratio) * twt * ( var_beta);
-      Rprintf("twt in CTss in CT.c %d.\n", twt); 
+    
  }
 
 
