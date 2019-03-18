@@ -14,7 +14,8 @@ void
 CTH_rundown(pNode tree, int obs, double *cp, double *xpred, double *xtemp, int k, double alpha, 
             double xtrain_to_est_ratio, double propensity)
 {
-	Rprintf("CTH_rundown.c");
+    Rprintf("CTH_rundown.c");
+	
     int i, obs2 = (obs < 0) ? -(1 + obs) : obs;
     int my_leaf_id;
     pNode otree =  tree;
@@ -76,7 +77,9 @@ CTH_rundown(pNode tree, int obs, double *cp, double *xpred, double *xtemp, int k
         if (trs == 0) {
             tr_mean = tree->parent->xtreatMean[0];
             tr_var = 0;
-        } else {Rprintf("else trs in CTH_rundown.c %d.\n", trs);
+        } else {
+	    
+            //Rprintf("else trs in CTH_rundown.c %d.\n", trs);
             tr_mean = trsums / trs;
             tree->xtreatMean[0] = tr_mean;
             tr_var = tr_sqr_sum / trs - tr_mean * tr_mean;
@@ -91,6 +94,7 @@ CTH_rundown(pNode tree, int obs, double *cp, double *xpred, double *xtemp, int k
             con_var = con_sqr_sum / cons - con_mean * con_mean;
         }
         
+	 Rprintf("ct_xeval");   
         xtemp[i] = (*ct_xeval)(ct.ydata[obs2], ct.wt[obs2], ct.treatment[obs2], tr_mean, 
                     con_mean, trs, cons, alpha, xtrain_to_est_ratio, propensity);
     }
