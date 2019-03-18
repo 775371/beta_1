@@ -47,10 +47,10 @@ print("honest.causalTree.R")
 	#if (sum(treatment %in% c(0,1)) != nobs) {
 	#	stop("The treatment status should be 1 or 0 only: 1 represent treated and 0 represent controlled.")
 	#}
-	#if (sum(treatment) == 0  ) { #|| sum(treatment) == nobs
+	if (sum(treatment) == 0  ) { #|| sum(treatment) == nobs
 	  
-	#	stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
-	#}
+		stop("The data only contains treated cases or controlled cases, please check 'treatment' again.") 
+	}
 
 	# ---------------------------------------------------------------------------------------
 	# check the honest re-estimation data set:
@@ -153,10 +153,8 @@ print("honest.causalTree.R")
 		}
 	}
 
-	
 	## check the Split.Honest == T/F
 	split.Honest.num <- pmatch(split.Honest, c(T, F))
-	
 	if(is.na(split.Honest.num)) 
 		stop("Invalid split.Honest input, split.Honest can be only TRUE or FALSE.")
 
@@ -171,7 +169,6 @@ print("honest.causalTree.R")
 				stop("Invalid input for split.alpha. split.alpha should between 0 and 1.")
 			}
 		}
-		
 	  #check for gamma for policy
 	  if(missing(split.gamma)) {
 	    # set default honest splitting alpha to 0.5
@@ -211,8 +208,7 @@ print("honest.causalTree.R")
 	xvar <- apply(X, 2, var)
 	method <- "anova"
 	method.int <- 1
-	
-        
+
 	# ------------------------------------- cv begins -------------------------------------- #
 	if (missing(cv.option)) {
 		# temporarily, no crossvalidation 
@@ -350,8 +346,7 @@ print("honest.causalTree.R")
 		storage.mode(wt) <- "double"
 		storage.mode(treatment) <- "double"
 		minsize <- as.integer(minsize) # minimum number of obs for treated and control cases in one leaf node
-              
-	
+
 		ctfit <- .Call(C_causalTree,
 					   ncat = as.integer(cats * !isord),
 					   split_Rule = as.integer(split.Rule.int), # tot, ct, fit, tstats, totD, ctD, fitD, tstatsD
