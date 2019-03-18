@@ -86,7 +86,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
     }
      
         
-    var_beta = (z_hat_sum/(twt-1))/(yy_sum-yy_sum/twt)) ;
+    var_beta = (z_hat_sum/(twt-1))/(yy_sum-yy_sum/twt) ;
     *tr_mean = temp1 / ttreat;
     *con_mean = temp0 / (twt - ttreat);
     *value = effect;
@@ -174,7 +174,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     }
      
         
-    var_beta = (z_hat_sum/(right_wt-1)) / (right_yy_sum-right_yy_sum/right_wt)) ;
+    var_beta = (z_hat_sum/(right_wt-1)) / (right_yy_sum-right_yy_sum/right_wt) ;
         
         
         
