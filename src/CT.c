@@ -67,7 +67,7 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
        
         yy_sum += treatment[i] * treatment[i];
         zz_sum += *y[i] * *y[i];
-        
+        z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
     }
 
    
@@ -78,9 +78,9 @@ CTss(int n, double *y[], double *value,  double *con_mean, double *tr_mean,
    
     /* Y= beta_0 + beta_1 treatment , ONLY one pair*/
    
-    for (i = 0; i < n; i++) {
+    /*for (i = 0; i < n; i++) {
       z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i])* (*y[i]-beta_0-beta_1*treatment[i]);
-    }
+    }*/
      
     beta_1 = (twt * yz_sum - z_sum * y_sum) / (twt * yy_sum - y_sum * y_sum); 
     beta_0 = (z_sum - beta_1 * y_sum) / twt;
