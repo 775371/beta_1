@@ -172,16 +172,16 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     
     beta_sqr_sum = beta_1 * beta_1 ;
        
-    for (i = 0; i < n; i++) {
+   /* for (i = 0; i < n; i++) {
       z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
-    }
+    }*/
      
         
-    var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum-right_y_sum * right_y_sum/right_wt) ;
+   // var_beta = (z_hat_sum/(right_wt-2)) / (right_yy_sum-right_y_sum * right_y_sum/right_wt) ;
     temp=beta_1;  
     
         
-    //var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
+    var_beta = beta_sqr_sum / right_wt - beta_1 * beta_1 / (right_wt * right_wt);
     //temp = right_tr_sum / right_tr - (right_sum - right_tr_sum) / (right_wt - right_tr);
     tr_var = right_tr_sqr_sum / right_tr - right_tr_sum * right_tr_sum / (right_tr * right_tr);
     con_var = (right_sqr_sum - right_tr_sqr_sum) / (right_wt - right_tr)
