@@ -359,6 +359,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         yz_[i] =  0;
         yy_[i] =  0;
         zz_ [i]=  0;
+                
         }
         
         /* rank the classes by treatment effect */
