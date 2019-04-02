@@ -343,12 +343,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             wtsqrsums[i] = 0;
             trsqrsums[i] = 0;
                 
-           /* twt[i] = 0;
-            y_sum[i] = 0;
-            z_sum[i] = 0;
-            yz_sum[i] = 0;  
-            yy_sum[i] = 0; 
-            zz_sum[i] = 0;*/
+        y_[i] =  0;
+        z_ [i]=  0;
+        yz_[i] =  0;
+        yy_[i] =  0;
+        zz_ [i]=  0;
         }
         
         /* rank the classes by treatment effect */
@@ -363,21 +362,21 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             wtsqrsums[j] += (*y[i]) * (*y[i]) * wt[i];
             trsqrsums[j] +=  (*y[i]) * (*y[i]) * wt[i] * treatment[i];
             
-            
-            /*twt[j] += wt[i];
-            y_sum[j] += treatment[i];
-            z_sum[j] += *y[i];
-            yz_sum[j] += *y[i] * treatment[i];
-            yy_sum[j] += treatment[i] * treatment[i];
-            zz_sum[j] += *y[i] * *y[i];*/
+        y_[j] += treatment[i];
+        z_[j] += *y[i];   
+        yz_[j] += *y[i] * treatment[i];
+        yy_[j] += treatment[i] * treatment[i];
+        zz_[j] += *y[i] * *y[i];
+       
             
         }
         
         for (i = 0; i < nclass; i++) {
             if (countn[i] > 0) {
                 tsplit[i] = RIGHT;
-                treatment_effect[i] = trsums[j] / trs[j] - (wtsums[j] - trsums[j]) / (wts[j] - trs[j]);
+               treatment_effect[i] = (wts[i] * yz_[i] - z_[i] * y_[i]) / (wts[i] * yy_[i] - y_[i] * y_[i]);
                 /*treatment_effect[i] = ( twt[j] * yz_sum[j] - z_sum[j] * y_sum[j]) / (twt[j] * yy_sum[j] - y_sum[j] * y_sum[j]); */
+           Rprintf("treatment_effect[i] in function CT in CT.c is %d\n", treatment_effect[i]);  
             } else
                 tsplit[i] = 0;
                 
