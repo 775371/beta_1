@@ -17,7 +17,7 @@ int
 partition(int nodenum, pNode splitnode, double *sumrisk, int n1, int n2,
           int minsize, int split_Rule, double alpha, int bucketnum, int bucketMax,
           double train_to_est_ratio)
-{
+{Rprintf("partition.c\n");
     pNode me;
     double tempcp;
     int i, j, k;
