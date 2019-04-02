@@ -317,11 +317,13 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 temp = left_effect + right_effect - node_effect;
                        /*check beta*/
                        
-           
+            Rprintf("temp in cont in CT.c %d.\n", temp); 
+            Rprintf("best in cont in CT.c %d.\n", best); 
                        
-                if (temp > best) {
+                if (temp > best) {Rprintf("cont: compare temp and best\n");
                     best = temp;
-                    where = i;               
+                    where = i;     
+                                  Rprintf("best after in cont %d.\n", best);
                     if (left_temp < right_temp){
                         direction = LEFT;
                     }
@@ -343,7 +345,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     * Categorical predictor
     */
     else {
-            Rprintf("come in Categorical predictor\n");
+        Rprintf("come in Categorical predictor\n");
         for (i = 0; i < nclass; i++) {
             countn[i] = 0;
             wts[i] = 0;
@@ -386,6 +388,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
         for (i = 0; i < nclass; i++) {
             if (countn[i] > 0) {
                 tsplit[i] = RIGHT;
+                    
                treatment_effect[i] = (wts[i] * yz_[i] - z_[i] * y_[i]) / (wts[i] * yy_[i] - y_[i] * y_[i]);
                 /*treatment_effect[i] = ( twt[j] * yz_sum[j] - z_sum[j] * y_sum[j]) / (twt[j] * yy_sum[j] - y_sum[j] * y_sum[j]); */
            Rprintf("treatment_effect[i] in function CT in CT.c is %d\n", treatment_effect[i]);  
@@ -530,12 +533,15 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 right_effect = alpha * right_temp * right_temp * right_wt
                         - (1 - alpha) * (1 + train_to_est_ratio) * right_wt *
                             (right_tr_var / right_tr + right_con_var / (right_wt - right_tr));*/
+                    
                 temp = left_effect + right_effect - node_effect;
+                    
                 Rprintf("temp in cat in CT.c %d.\n", temp); 
                 Rprintf("best in cat in CT.c %d.\n", best); 
                 
-    if (temp > best) {
-                    Rprintf("YES!cat: compare temp and best\n");    
+                if (temp > best) {
+                    
+                        Rprintf("YES!cat: compare temp and best\n");    
                     best = temp;
                     Rprintf("best after in cat is %d\n", best);
                         
@@ -550,6 +556,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
          Rprintf("improve cat is %d\n", *improve);
     }
          Rprintf("End function CT in CT.c is %d\n");
+        
 }
 
 
