@@ -28,7 +28,8 @@ CTinit(int n, double *y[], int maxcat, char **error,
         trsums = wtsums + maxcat;
         wtsqrsums = trsums + maxcat;
         trsqrsums = wtsqrsums + maxcat;
-            y_ = (double *) ALLOC(9 * maxcat, sizeof(double));
+        
+        y_ = (double *) ALLOC(5 * maxcat, sizeof(double));
         z_ = y_ + maxcat;
         yz_ = z_ + maxcat;
         yy_ = yz_ + maxcat;
