@@ -546,6 +546,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             }
         }
         *improve = best;
+         Rprintf("improve cat is %d\n", *improve);
     }
          Rprintf("End function CT in CT.c is %d\n");
 }
