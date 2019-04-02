@@ -533,10 +533,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 Rprintf("temp in cat in CT.c %d.\n", temp); 
                 Rprintf("best in cat in CT.c %d.\n", best); 
                 
-                if (temp > best) {
+    if (temp > best) {
                     Rprintf("YES!cat: compare temp and best\n");    
                     best = temp;
-                    
+                    Rprintf("best after in cat is %d\n", best);
+                        
                     if (left_temp > right_temp)
                         for (i = 0; i < nclass; i++) csplit[i] = -tsplit[i];
                     else
