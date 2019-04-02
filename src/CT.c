@@ -433,6 +433,21 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             left_tr_sqr_sum += trsqrsums[j];
             right_tr_sqr_sum -= trsqrsums[j];
             
+                
+            left_y_sum += y_[j];
+            right_y_sum -= y_[j];
+            left_z_sum += z_[j];
+            right_z_sum -= z_[j];
+            left_yz_sum += yz_[j];
+            right_yz_sum -= yz_[j];
+           
+            left_yy_sum += yy_[j];
+            right_yy_sum -= yy_[j];
+            left_zz_sum += zz_[j];
+            right_zz_sum -= zz_[j];
+                
+                
+                
             if (left_n >= edge && right_n >= edge &&
                 
                 (int) left_wt  >= min_node_size &&
@@ -446,9 +461,16 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     left_temp = beta_0;
     beta_sqr_sum = beta_1 * beta_1 ;
     
+                    Rprintf("beta_1 in cat in CT.c %d.\n", beta_1);  
+                    
+                    
     for (i = 0; i < n; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
+     
+    Rprintf("z_hat_sum in cat in CT.c %d.\n", z_hat_sum);    
+                    
+                    
                     
     var_beta = (z_hat_sum/(left_n-2)) / (left_yy_sum -left_y_sum * left_y_sum/left_n) ;
                
@@ -470,7 +492,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     for (i = 0; i < n; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
-                    
+    
+                 
     var_beta = (z_hat_sum/(right_n-1)) / (right_yy_sum  -right_y_sum * right_y_sum/  right_n) ;
                
     //var_beta = beta_sqr_sum / n - beta_1 * beta_1 / (n * n);
