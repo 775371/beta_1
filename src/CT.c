@@ -507,7 +507,8 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                         - (1 - alpha) * (1 + train_to_est_ratio) * right_wt *
                             (right_tr_var / right_tr + right_con_var / (right_wt - right_tr));*/
                 temp = left_effect + right_effect - node_effect;
-            
+                Rprintf("temp in cat in CT.c %d.\n", temp); 
+                Rprintf("best in cat in CT.c %d.\n", best); 
                 
                 if (temp > best) {
                     Rprintf("YES!cat: compare temp and best\n");    
