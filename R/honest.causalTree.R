@@ -11,7 +11,7 @@ honest.causalTree <- function(formula, data, weights, treatment, subset,
 							  cv.alpha = 0.5,cv.gamma=0.5,split.gamma=0.5, cost, ...)  { 
         
 	Call <- match.call()
-print("honest.causalTree.R")
+print("v1: honest.causalTree.R")
 	indx <- match(c("formula", "data", "weights", "subset"),
 				  names(Call), nomatch = 0L)
 
