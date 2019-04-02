@@ -11,6 +11,11 @@ static int *countn;
 static int *tsplit;
 static double *wtsqrsums, *trsqrsums;
 
+/*categorical var*/
+static double *y_, *z_ , *yz_ ,  *yy_ , *zz_ ;
+
+
+
 int
 CTinit(int n, double *y[], int maxcat, char **error,
         int *size, int who, double *wt, double *treatment, 
