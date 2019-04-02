@@ -510,6 +510,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             
                 
                 if (temp > best) {
+                    Rprintf("YES!cat: compare temp and best\n");    
                     best = temp;
                     
                     if (left_temp > right_temp)
