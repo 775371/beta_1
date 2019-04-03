@@ -541,7 +541,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     
                 if (best < temp) {
                     
-                    printf("YES!cat: compare temp and best\n");    
+                    Rprintf("YES!cat: compare temp and best\n");    
                     best = temp;
                     Rprintf("best after in cat is %d\n", best);
                         
