@@ -384,7 +384,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             
         }
         
-        for (i = 0; i < nclass; i++) {Rprintf("i in nclass in function CT in CT.c is %d\n", i);
+	Rprintf("nclass in function CT in CT.c is %d\n", nclass);
+        for (i = 0; i < nclass; i++) {
+		Rprintf("i in nclass in function CT in CT.c is %d\n", i);
+		
             if (countn[i] > 0) {
 		    
                 tsplit[i] = RIGHT;   
