@@ -537,12 +537,11 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     
                 Rprintf("temp in cat in CT.c %d.\n", temp); 
                 Rprintf("best in cat in CT.c %d.\n", best); 
-                if ( 5 < 10 )
-    printf( "Five is now less than ten, that's a big surprise" );
+               
                     
-                if (temp>best) {
+                if (best < temp) {
                     
-                        Rprintf("YES!cat: compare temp and best\n");    
+                    printf("YES!cat: compare temp and best\n");    
                     best = temp;
                     Rprintf("best after in cat is %d\n", best);
                         
