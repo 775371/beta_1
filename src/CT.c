@@ -538,15 +538,16 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                             (right_tr_var / right_tr + right_con_var / (right_wt - right_tr));*/
                     
                 temp = left_effect + right_effect - node_effect;
+		    
                  Rprintf("left_effect in cat in CT.c %d.\n", left_effect); 
                 Rprintf("right_effect in cat in CT.c %d.\n", right_effect); 
-		 Rprintf("node_effect in cat in CT.c %d.\n", node_effect);    
+		 Rprintf("node_effect in cat in CT.c %d.\n", node_effect); 
+		    
                 Rprintf("temp in cat in CT.c %d.\n", temp); 
                 Rprintf("best in cat in CT.c %d.\n", best); 
-               Rprintf("compare in cat in CT.c %d.\n", temp<0);
+               Rprintf("compare in cat in CT.c %d.\n", temp>0);
+		    
       if (temp > best) {
-	     
-      
 		    Rprintf("YES!cat: compare temp and best\n");
                     best = temp;
 				  
@@ -557,7 +558,6 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     else
                         for (i = 0; i < nclass; i++) csplit[i] = tsplit[i];
 		}
-		   Rprintf("out of if: temp<best\n"); 
 	    }
 	}
 
