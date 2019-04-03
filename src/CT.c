@@ -384,10 +384,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
             
         }
         
-        for (i = 0; i < nclass; i++) {
+        for (i = 0; i < nclass; i++) {Rprintf("i in nclass in function CT in CT.c is %d\n", i);
             if (countn[i] > 0) {
-                tsplit[i] = RIGHT;
-                    
+		    
+                tsplit[i] = RIGHT;   
                treatment_effect[i] = (wts[i] * yz_[i] - z_[i] * y_[i]) / (wts[i] * yy_[i] - y_[i] * y_[i]);
                 /*treatment_effect[i] = ( twt[j] * yz_sum[j] - z_sum[j] * y_sum[j]) / (twt[j] * yy_sum[j] - y_sum[j] * y_sum[j]); */
            Rprintf("treatment_effect[i] in function CT in CT.c is %d\n", treatment_effect[i]);  
