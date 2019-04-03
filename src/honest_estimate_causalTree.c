@@ -141,7 +141,7 @@ next:
         yy_sum[npos] += wt2[i] * treatment2[i] * treatment2[i];
         zz_sum[npos] += wt2[i] * y2[i] * y2[i];
      
-        Rprintf("walk down the tree\n");
+        
         /* walk down the tree */
         nspl = nodes[2][npos] - 1;      /* index of primary split */
         if (nspl >= 0) {        /* not a leaf node */
@@ -202,12 +202,12 @@ next:
         }
         where[i] = node;
     }
-    Rprintf("The nnodemax in  honest.causaltree.c is %d\n", nnodemax);
+    
     for (i = 0; i <= nnodemax; i++) {
         if (invertdx[i] == -1)
             continue;
         int origindx = invertdx[i];
-     Rprintf("The origindx in  honest.causaltree.c is %d\n", origindx);
+     
         //base case
         /*if (trs[origindx] != 0 && cons[origindx] != 0) {*/
           if (trs[origindx] != 0 && cons[origindx] != 0) {
