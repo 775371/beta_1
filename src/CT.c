@@ -470,9 +470,10 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     Rprintf("beta_1 in cat in CT.c %d.\n", beta_1);  
                     
                     
-    for (i = 0; i < nclass; i++) {
+   /* for (i = 0; i < nclass; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
+    */
      
     Rprintf("z_hat_sum in cat in CT.c %d.\n", z_hat_sum);    
                     
@@ -495,9 +496,9 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     right_temp = beta_0;
     beta_sqr_sum = beta_1 * beta_1 ;
     
-    for (i = 0; i < nclass; i++) {
+    /*for (i = 0; i < nclass; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
-    }
+    }*/
     
                  
     var_beta = (z_hat_sum/(right_n-1)) / (right_yy_sum  -right_y_sum * right_y_sum/  right_n) ;
