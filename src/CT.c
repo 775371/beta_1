@@ -470,7 +470,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                     Rprintf("beta_1 in cat in CT.c %d.\n", beta_1);  
                     
                     
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < nclass; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
      
@@ -495,7 +495,7 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
     right_temp = beta_0;
     beta_sqr_sum = beta_1 * beta_1 ;
     
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < nclass; i++) {
     z_hat_sum += (*y[i]-beta_0-beta_1*treatment[i]) * (*y[i]-beta_0-beta_1*treatment[i]);
     }
     
@@ -541,8 +541,9 @@ void CT(int n, double *y[], double *x, int nclass, int edge, double *improve, do
                 Rprintf("temp in cat in CT.c %d.\n", temp); 
                 Rprintf("best in cat in CT.c %d.\n", best); 
                
-      if (temp > best) 
-      {
+      if (temp > best) {
+	     
+      
 		    Rprintf("YES!cat: compare temp and best\n");
                     best = temp;
 				  
